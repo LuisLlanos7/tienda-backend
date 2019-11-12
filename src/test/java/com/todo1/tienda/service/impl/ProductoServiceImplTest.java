@@ -1,90 +1,182 @@
 package com.todo1.tienda.service.impl;
 
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.initMocks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
+import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
+import org.springframework.data.jpa.domain.Specification;
 
 import com.todo1.tienda.entity.Marca;
 import com.todo1.tienda.entity.Producto;
 import com.todo1.tienda.entity.TipoProducto;
+import com.todo1.tienda.exception.ObjectNotFoundException;
+import com.todo1.tienda.exception.ValueNotPermittedException;
 import com.todo1.tienda.repository.ProductoRepository;
 import com.todo1.tienda.web.util.Constantes;
+import com.todo1.tienda.web.util.Mensajes;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
-//@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
+@RunWith(MockitoJUnitRunner.class)
 class ProductoServiceImplTest {
 
 	@Mock
 	ProductoRepository productoRepository;
 
 	@InjectMocks
-	private ProductoServiceImpl proceso;
+	ProductoServiceImpl proceso;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		MockitoAnnotations.initMocks(this);
+		initMocks(this);
+	}
+	
+	@Test
+	void testGetProductoById() {
+		when(productoRepository.findById(anyLong())).thenReturn(obtenerProductoOpcional());
+		Producto producto = proceso.getProductoById(anyLong());
+		assertNotNull(producto);
+	}
+	
+	@Test
+	void testGetProductoByIdException() {
+		when(productoRepository.findById(anyLong())).thenReturn(obtenerProductoOpcional());
+		Throwable throwable = assertThrows(ObjectNotFoundException.class, () -> proceso.getProductoById(anyLong()));
+		assertEquals(Mensajes.NOT_FOUND, throwable.getMessage());
 	}
 
 	@Test
 	void testListarDisponibles() {
-		Mockito.when(productoRepository.listByEstado(Mockito.anyInt())).thenReturn(obtenerListaProductos());
-
+		when(productoRepository.listByEstado(anyInt())).thenReturn(obtenerListaProductos());
 		List<Producto> productos = proceso.listarDisponibles();
-
 		assertTrue(!productos.isEmpty());
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	void testGetProductosDatatable() {
-		fail("Not yet implemented");
+		when(productoRepository.findAll(any(DataTablesInput.class), (Specification<Producto>) any())).thenReturn(null);
+		DataTablesOutput<Producto> output = proceso.getProductosDatatable(null);
+		assertNull(output);
 	}
 
-	/**
 	@Test
-	void testAgregarNotNull() {
-		Mockito.when(productoRepository.buscarXNombreYCodigo("a", "b")).thenReturn(obtenerListaProductos());
-
-		proceso.agregar(Mockito.any(Producto.class));
-
+	void testAgregar() {
+		when(productoRepository.buscarXNombreYCodigo(anyString(), anyString())).thenReturn(new ArrayList<Producto>());
+		when(productoRepository.save(any())).thenReturn(obtenerProducto());
+		proceso.agregar(obtenerProducto());
+		verify(productoRepository, times(1)).buscarXNombreYCodigo(anyString(), anyString());
 	}
-	**/
 
-//	@Test
-//	void testAgregarNull() {
-//		Mockito.when(productoRepository.buscarXNombreYCodigo(Mockito.anyString(), Mockito.anyString()))
-//				.thenReturn(obtenerListaProductos());
-//		
-//		Assertions.assertThrows(ValueNotPermittedException.class, () -> {
-//			proceso.agregar(Mockito.any(Producto.class));
-//		});
-//	}
+	@Test
+	void testAgregarException() {
+		when(productoRepository.buscarXNombreYCodigo(anyString(), anyString())).thenReturn(obtenerListaProductos());
+		Throwable throwable = assertThrows(ValueNotPermittedException.class, () -> proceso.agregar(obtenerProducto()));
+		assertEquals(Mensajes.EXISTENTE, throwable.getMessage());
+	}
 
 	@Test
 	void testActualizar() {
-		fail("Not yet implemented");
+		when(productoRepository.findById(anyLong())).thenReturn(Optional.of(obtenerProducto()));
+		proceso.actualizar(obtenerProducto());
+		verify(productoRepository, times(1)).save(any());
+	}
+
+	@Test
+	void testActualizarException() {
+		when(productoRepository.findById(anyLong())).thenReturn(Optional.empty());
+		Throwable throwable = assertThrows(ObjectNotFoundException.class, () -> proceso.actualizar(obtenerProducto()));
+		assertEquals(Mensajes.NOT_FOUND, throwable.getMessage());
 	}
 
 	@Test
 	void testEliminar() {
-		fail("Not yet implemented");
+		when(productoRepository.existsById(anyLong())).thenReturn(true);
+		proceso.eliminar(obtenerProducto().getId());
+		verify(productoRepository, times(1)).setEstadoXCodigo(anyInt(), anyLong());
 	}
+
+	@Test
+	void testEliminarException() {
+		when(productoRepository.existsById(anyLong())).thenReturn(false);
+		Throwable throwable = assertThrows(ObjectNotFoundException.class,
+				() -> proceso.eliminar(obtenerProducto().getId()));
+		assertEquals(Mensajes.NOT_FOUND, throwable.getMessage());
+	}
+
+	private Producto obtenerProducto() {
+		Marca m1 = new Marca();
+		m1.setId(new Long(1));
+		m1.setNombre("MARVEL");
+		m1.setDescripcion("MARVEL");
+		m1.setEstado(1);
+
+		TipoProducto tp = new TipoProducto();
+		tp.setId(new Long(1));
+		tp.setNombre("CAMISA");
+		tp.setDescripcion("CAMISA");
+		tp.setEstado(1);
+
+		Producto p1 = new Producto();
+		p1.setId(new Long(1));
+		p1.setCodigo("CAM-01");
+		p1.setNombre("CAMISA-AVANGERS");
+		p1.setDescripcion("CAMISA-AVANGERS");
+		p1.setEstado(Constantes.ESTADO_ACTIVO);
+		p1.setMarca(m1);
+		p1.setTipoProducto(tp);
+		p1.setStock(40);
+
+		return p1;
+	}
+	
+	private Optional<Producto> obtenerProductoOpcional() {
+		Marca m1 = new Marca();
+		m1.setId(new Long(1));
+		m1.setNombre("MARVEL");
+		m1.setDescripcion("MARVEL");
+		m1.setEstado(1);
+
+		TipoProducto tp = new TipoProducto();
+		tp.setId(new Long(1));
+		tp.setNombre("CAMISA");
+		tp.setDescripcion("CAMISA");
+		tp.setEstado(1);
+
+		Producto p1 = new Producto();
+		p1.setId(new Long(1));
+		p1.setCodigo("CAM-01");
+		p1.setNombre("CAMISA-AVANGERS");
+		p1.setDescripcion("CAMISA-AVANGERS");
+		p1.setEstado(Constantes.ESTADO_ACTIVO);
+		p1.setMarca(m1);
+		p1.setTipoProducto(tp);
+		p1.setStock(40);
+
+		return Optional.of(p1);
+	}
+	
 
 	private List<Producto> obtenerListaProductos() {
 		List<Producto> productos = new ArrayList<Producto>();

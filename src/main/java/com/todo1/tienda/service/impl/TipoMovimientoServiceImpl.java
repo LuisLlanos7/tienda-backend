@@ -28,25 +28,4 @@ public class TipoMovimientoServiceImpl implements TipoMovimientoService {
 	@Autowired
 	TipoMovimientoRepository tipoMovimientoRepository;
 
-	/**
-	@Override
-	public TipoMovimiento obtenerPorId(long id) {
-		logger.debug("obtenerPorId : Servicio obteniendo por id");
-		
-		System.out.println("2");
-
-		TipoMovimiento tipoMovimiento = tipoMovimientoRepository.getOne(id);
-		
-		System.out.println("3");
-
-		if (tipoMovimiento == null) {
-			logger.debug("obtenerPorId : Servicio no existe el tipo movimiento");
-			System.out.println("4");
-			throw new ObjectNotFoundException(Mensajes.BUSQUEDA_INCORRECTA);
-		}
-
-		return tipoMovimiento;
-	}
-	**/
-
 }

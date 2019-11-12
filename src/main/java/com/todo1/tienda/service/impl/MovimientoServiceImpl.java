@@ -3,8 +3,6 @@
  */
 package com.todo1.tienda.service.impl;
 
-import java.util.List;
-
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.todo1.tienda.entity.Movimiento;
 import com.todo1.tienda.entity.MovimientoDetalle;
-import com.todo1.tienda.entity.Producto;
 import com.todo1.tienda.repository.MovimientoRepository;
 import com.todo1.tienda.repository.ProductoRepository;
 import com.todo1.tienda.service.MovimientoService;
@@ -77,13 +74,5 @@ public class MovimientoServiceImpl implements MovimientoService {
 
 		movimientoRepository.save(m);
 	}
-	
-	/**
-	@Override
-	public List<Movimiento> listarDisponibles() {
-		logger.debug("listarDisponibles : Servicio listando movimientos disponibles");
-		return movimientoRepository.findAll();
-	}
-	**/
 
 }
