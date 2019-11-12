@@ -63,13 +63,8 @@ class MovimientoServiceImplTest {
 	}
 	
 	@Test
-	void testActualizarStock() {
-		/**
-		 * ESTE NO ME FUNCIONA
-		 */
-		//when(productoRepository.actualizarStock(anyInt(), any()).thenReturn(obtenerMovimientoEntrada());
-		//proceso.agregar(obtenerMovimientoSalida());
-		//verify(movimientoRepository, times(1)).save(any());
+	void testSaveMovimiento() {		
+		when(movimientoRepository.save(any(Movimiento.class))).thenReturn(obtenerMovimientoEntrada());		
 	}
 
 	private Movimiento obtenerMovimientoEntrada() {

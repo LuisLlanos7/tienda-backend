@@ -26,9 +26,4 @@ class TipoMovimientoServiceImplTest {
 		initMocks(this);
 	}
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
-
 }
