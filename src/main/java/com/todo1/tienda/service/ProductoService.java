@@ -15,6 +15,8 @@ import com.todo1.tienda.entity.Producto;
  *
  */
 public interface ProductoService {
+	
+	public Producto getProductoById(long id);
 
 	public void agregar(Producto p);
 

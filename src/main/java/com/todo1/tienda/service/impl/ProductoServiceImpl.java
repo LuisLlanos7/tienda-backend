@@ -13,6 +13,7 @@ import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.Optional;
 
 import com.todo1.tienda.entity.Marca;
 import com.todo1.tienda.entity.Producto;
@@ -38,6 +39,14 @@ public class ProductoServiceImpl implements ProductoService {
 
 	@Autowired
 	ProductoRepository productoRepository;
+	
+	@Override
+	public Producto getProductoById(long id) {
+		logger.debug("getProductoById : Servicio getById producto");
+        Optional<Producto> optionalProducto = productoRepository.findById(id);
+
+        return optionalProducto.orElseThrow(() -> new ObjectNotFoundException(Mensajes.NOT_FOUND));
+	}
 
 	@Override
 	public List<Producto> listarDisponibles() {
@@ -61,7 +70,7 @@ public class ProductoServiceImpl implements ProductoService {
 
 		logger.debug("agregar : Servicio agregar producto 2 ");
 
-		if (listaResultado.size() > 0) {
+		if (!listaResultado.isEmpty()) {
 			logger.debug("getProductosDatatable : El producto ya existe");
 			throw new ValueNotPermittedException(Mensajes.EXISTENTE);
 		}
@@ -109,5 +118,7 @@ public class ProductoServiceImpl implements ProductoService {
 		}
 
 	}
+
+	
 
 }

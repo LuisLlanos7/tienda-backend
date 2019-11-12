@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.todo1.tienda.entity.Producto;
 import com.todo1.tienda.model.Respuesta;
 import com.todo1.tienda.service.ProductoService;
+import com.todo1.tienda.web.util.Constantes;
 import com.todo1.tienda.web.util.Mensajes;
 
 /**
@@ -39,6 +40,21 @@ public class ProductoRestController {
 
 	@Autowired
 	ProductoService productoService;
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseEntity<Respuesta> obtener(@PathVariable("id") long id) {
+		logger.info("obtener - Controller: obtener por id");
+		
+		Producto producto = productoService.getProductoById(id);
+
+		Respuesta respuesta = new Respuesta();
+		respuesta.setExito(true);
+		respuesta.setCode(200);
+		respuesta.setMensaje(Mensajes.BUSQUEDA_CORRECTA);
+		respuesta.setData(producto);
+		return new ResponseEntity<>(respuesta, HttpStatus.OK);
+	}
+	
 	
 
 	@RequestMapping(value = "/datatable", method = RequestMethod.POST)
