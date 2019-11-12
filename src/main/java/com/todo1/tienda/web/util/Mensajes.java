@@ -8,6 +8,10 @@ package com.todo1.tienda.web.util;
  *
  */
 public class Mensajes {
+	
+	private Mensajes() {
+		
+	}
 
 	public static final String OPERACION_CORRECTA = "Operacion realizada correctamente.";
 	public static final String ADICION_CORRECTA = "Se agrego correctamente.";

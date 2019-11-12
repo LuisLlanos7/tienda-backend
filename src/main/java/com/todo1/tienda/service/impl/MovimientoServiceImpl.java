@@ -38,7 +38,7 @@ public class MovimientoServiceImpl implements MovimientoService {
 
 		for (MovimientoDetalle movimientoDetalle : m.getDetalles()) {
 			logger.debug("agregar : Servicio iterando en movimiento detalles");
-			System.out.println("ITERANDO ...");
+
 			movimientoDetalle.setMovimiento(m);
 
 			/**
@@ -52,8 +52,6 @@ public class MovimientoServiceImpl implements MovimientoService {
 				logger.debug("agregar : Servicio en movimiento de entrada, producto= ["
 						+ movimientoDetalle.getProducto().getId() + " - " + movimientoDetalle.getProducto().getNombre()
 						+ "]");
-				
-				System.out.println("ENTRADA ...");
 
 				stockActualizado = stockAntiguo + movimientoDetalle.getCantidad();
 
@@ -62,12 +60,8 @@ public class MovimientoServiceImpl implements MovimientoService {
 						+ movimientoDetalle.getProducto().getId() + " - " + movimientoDetalle.getProducto().getNombre()
 						+ "]");
 
-				System.out.println("SALIDA ...");
-				
 				stockActualizado = stockAntiguo - movimientoDetalle.getCantidad();
 			}
-			
-			System.out.println("ANTES DE ACTUALIZAR ...");
 
 			productoRepository.actualizarStock(stockActualizado, movimientoDetalle.getProducto().getId());
 		}

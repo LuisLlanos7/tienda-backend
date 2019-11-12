@@ -9,8 +9,8 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.todo1.tienda.entity.TipoProducto;
@@ -30,11 +30,10 @@ public class TipoProductoRestController {
 	@Autowired
 	TipoProductoService tipoProductoService;
 
-	@RequestMapping(value = "/disponibles", method = RequestMethod.GET, headers = "Accept=application/json")
+	@GetMapping(value = "/disponibles", headers = "Accept=application/json")
 	public List<TipoProducto> listarDisponibles() {
 		logger.debug("listarDisponibles: Controlador listando tipos productos disponibles");
-		List<TipoProducto> tiposProductos = tipoProductoService.listarDisponibles();
-		return tiposProductos;
+		return tipoProductoService.listarDisponibles();
 	}
 
 }

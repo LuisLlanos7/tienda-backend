@@ -61,9 +61,13 @@ class ProductoServiceImplTest {
 	
 	@Test
 	void testGetProductoByIdException() {
-		when(productoRepository.findById(anyLong())).thenReturn(obtenerProductoOpcional());
-		Throwable throwable = assertThrows(ObjectNotFoundException.class, () -> proceso.getProductoById(anyLong()));
-		assertEquals(Mensajes.NOT_FOUND, throwable.getMessage());
+		//when(productoRepository.findById(anyLong())).thenReturn(obtenerProductoOpcional());
+		//Throwable throwable = assertThrows(ObjectNotFoundException.class, () -> proceso.getProductoById(anyLong()));
+		//assertEquals(Mensajes.NOT_FOUND, throwable.getMessage());
+		
+		Exception exception = assertThrows(ObjectNotFoundException.class, () -> proceso.getProductoById(new Long(0)));
+		assertEquals(Mensajes.NOT_FOUND, exception.getMessage());
+	
 	}
 
 	@Test

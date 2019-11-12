@@ -8,6 +8,10 @@ package com.todo1.tienda.web.util;
  *
  */
 public class Constantes {
+	
+	private Constantes() {
+		
+	}
 
 	/**
 	 * ESTADOS DE LAS ENTIDADES DEL SISTEMA

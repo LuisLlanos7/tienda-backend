@@ -18,6 +18,8 @@ import com.todo1.tienda.entity.Producto;
  */
 public class ProductoSpecification implements Specification<Producto> {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private SearchCriteria criteria;
 
 	public ProductoSpecification(SearchCriteria criteria) {

@@ -1,9 +1,6 @@
 package com.todo1.tienda.service.impl;
 
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -63,8 +60,10 @@ class MovimientoServiceImplTest {
 	}
 	
 	@Test
-	void testSaveMovimiento() {		
-		when(movimientoRepository.save(any(Movimiento.class))).thenReturn(obtenerMovimientoEntrada());		
+	void testSaveMovimiento() {				
+		when(movimientoRepository.save(any(Movimiento.class))).thenReturn(obtenerMovimientoEntrada());
+		proceso.agregar(obtenerMovimientoEntrada());
+		verify(movimientoRepository, times(1)).save(any(Movimiento.class));
 	}
 
 	private Movimiento obtenerMovimientoEntrada() {

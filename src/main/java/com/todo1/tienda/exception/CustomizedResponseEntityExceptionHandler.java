@@ -51,8 +51,6 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 	@ExceptionHandler(ObjectNotFoundException.class)
 	public final ResponseEntity<Object> handleNotFoundException(ObjectNotFoundException ex, WebRequest request) {
 
-		System.out.println("==== " + ex.getMessage());
-
 		String responseText = ex.getMessage();
 		ApiError error = new ApiError(Integer.valueOf(HttpStatus.NOT_FOUND.toString().split(" ")[0]),
 				HttpStatus.NOT_FOUND.name(), responseText, "");
