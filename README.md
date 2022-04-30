@@ -1,4 +1,4 @@
-# Hulk Cardex System - Hulk-Store (Inventory)
+# Hulk Cardex System - Hulk-Store (Inventory) BACKEND
 
 Hulk Store is a web app for maintaining a product's inventory. It was developed by Luis Espinosa Llanos and for the backend it was used the following technologies and tools: 
 
