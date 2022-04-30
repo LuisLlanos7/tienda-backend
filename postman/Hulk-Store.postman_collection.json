@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "75d7644a-aebe-411f-bbfd-a11125f37499",
+		"name": "Hulk-Store",
+		"description": "Evaluacion Todo1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Productos Disponibles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/tienda/producto/disponibles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tienda",
+								"producto",
+								"disponibles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar Producto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"codigo\": \"CA-MAR-004\",\n    \"tipoProducto\": {\n        \"id\": 1,\n        \"nombre\": \"CAMISETA\",\n        \"descripcion\": \"CAMISETAS\",\n        \"estado\": 1\n    },\n    \"marca\": {\n        \"id\": 1,\n        \"nombre\": \"MARVEL\",\n        \"descripcion\": \"PRODUCTO DE LA MARCA DE COMICS MARVEL\",\n        \"estado\": 1\n    },\n    \"nombre\": \"CAMISA EJEMPLO 4\",\n    \"descripcion\": \"CAMISA EJEMPLO 4\",\n    \"stock\": 5,\n    \"estado\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/tienda/producto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tienda",
+								"producto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Producto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 3,\n    \"codigo\": \"CA-MAR-003\",\n    \"tipoProducto\": {\n        \"id\": 1,\n        \"nombre\": \"CAMISETA\",\n        \"descripcion\": \"CAMISETAS\",\n        \"estado\": 1\n    },\n    \"marca\": {\n        \"id\": 1,\n        \"nombre\": \"MARVEL\",\n        \"descripcion\": \"PRODUCTO DE LA MARCA DE COMICS MARVEL\",\n        \"estado\": 1\n    },\n    \"nombre\": \"CAMISA TONU STARK-STANDARD MODIFICADA\",\n    \"descripcion\": \"CAMISA TONU STARK-STANDARD MODIFICADA\",\n    \"stock\": 15,\n    \"estado\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/tienda/producto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tienda",
+								"producto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Producto",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/tienda/producto/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tienda",
+								"producto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Producto Por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/tienda/producto/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tienda",
+								"producto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tipo Productos Disponibles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/tienda/tipoProducto/disponibles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tienda",
+						"tipoProducto",
+						"disponibles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Marcas Disponibles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/tienda/marca/disponibles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tienda",
+						"marca",
+						"disponibles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tipo Movimiento Por Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/tienda/tipoMovimiento/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tienda",
+						"tipoMovimiento",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Realizar Movimiento en Productos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipoMovimiento\": {\n        \"id\": 1,\n        \"nombre\": \"ENTRADA\",\n        \"estado\": 1\n    },\n    \"empleado\": {\n        \"id\": 1,\n        \"codigo\": \"1075284097\",\n        \"nombres\": \"LUIS HERNAN\",\n        \"apellidos\": \"ESPINOSA LLANOS\",\n        \"identificacion\": 1075284097\n    },\n    \"detalles\": [\n        {\n            \"producto\": {\n                \"id\": 1,\n                \"codigo\": \"CA-MAR-001\",\n                \"tipoProducto\": {\n                    \"id\": 1,\n                    \"nombre\": \"CAMISETA\",\n                    \"descripcion\": \"CAMISETAS\",\n                    \"estado\": 1\n                },\n                \"marca\": {\n                    \"id\": 1,\n                    \"nombre\": \"MARVEL\",\n                    \"descripcion\": \"PRODUCTO DE LA MARCA DE COMICS MARVEL\",\n                    \"estado\": 1\n                },\n                \"nombre\": \"CAMISA AVENGERS END GAME-STANDARD\",\n                \"descripcion\": \"CAMISETA DEL ESTRENO DE AVANGERS\",\n                \"stock\": 5,\n                \"estado\": 1\n            },\n            \"cantidad\": 5\n        },\n        {\n            \"producto\": {\n                \"id\": 2,\n                \"codigo\": \"CA-MAR-002\",\n                \"tipoProducto\": {\n                    \"id\": 1,\n                    \"nombre\": \"CAMISETA\",\n                    \"descripcion\": \"CAMISETAS\",\n                    \"estado\": 1\n                },\n                \"marca\": {\n                    \"id\": 1,\n                    \"nombre\": \"MARVEL\",\n                    \"descripcion\": \"PRODUCTO DE LA MARCA DE COMICS MARVEL\",\n                    \"estado\": 1\n                },\n                \"nombre\": \"CAMISA AVENGERS INFINITY WAR-STANDARD\",\n                \"descripcion\": \"CAMISETA DEL ESTRENO DE AVANGERS INFINITY WAR\",\n                \"stock\": 4,\n                \"estado\": 1\n            },\n            \"cantidad\": 4\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/tienda/movimiento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tienda",
+						"movimiento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movimientos Disponibles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/tienda/movimiento/disponibles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tienda",
+						"movimiento",
+						"disponibles"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
