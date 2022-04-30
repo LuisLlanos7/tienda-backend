@@ -1,0 +1,61 @@
+# Hulk Cardex System - Hulk-Store (Inventory)
+
+Hulk Store is a web app for maintaining a product's inventory. For the backend I used the following technologies and tools: Java 8, 
+Spring Boot 2, Junit 5, Mockito, Embebbed apache tomcat (Spring boot), Maven 3.5, PostMan and Sonar Qube. It was written using the best practices 
+for instance, a controller, service and repository layer approach, code reusing, unit tests, a good condition coverage, and more... 
+
+## Where is the FrontEnd?
+There is another repository available with the frontend code. You can find it here:
+https://github.com/LuisEspinosa7/tienda-frontend
+
+## Video
+A video exposing the functionality of the proyect in local environment on a Desktop screen.
+
+https://youtu.be/YXhbBld822g
+
+## Pictures
+Some pictures of the project on a local environment respectively:
+
+<table style="width:100%">
+  <tr>
+    <td>
+  		<img width="450" alt="Eclipse" src="https://user-images.githubusercontent.com/56041525/166087937-2b0b65ad-a2d0-4649-91d6-6e4984059d4a.PNG">
+	  </td>
+    <td>
+  	<img width="450" alt="PostMan" src="https://user-images.githubusercontent.com/56041525/166087955-38327acc-5b17-487c-b524-e63e3d4941f9.PNG">
+    </td>
+  </tr>
+</table>
+
+<table style="width:100%">
+  <tr>
+    <td>
+  		<img width="450" alt="PostgreSQL" src="https://user-images.githubusercontent.com/56041525/166087969-de9325f0-1a54-481e-b8d7-eade2c231c33.PNG">
+	  </td>
+  </tr>
+</table>
+
+## Installation
+
+This proyect should be installed using the following command:
+```bash
+mvn clean install
+```
+
+## Usage
+In the target folder you will find the Jar archive, so please use the following command:
+
+```bash
+java -jar NAME_OF_THE_JAR.jar
+```
+
+## Tests and coverage
+In the project you will find the tests report with Jacoco. But you should scan it with SonarQube.
+
+
+## Contributing
+This proyect is quite simple, and is part of my personal portfolio, so it is not intended to receive contributions.
+
+
+## License
+It is free.
