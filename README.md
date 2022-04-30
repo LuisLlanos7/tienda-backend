@@ -21,7 +21,7 @@ Hulk Store is a web app for maintaining a product's inventory. It was developed 
   </tr>
   <tr>
     <td>
-  	Servidor	
+  	Server	
     </td>
     <td>
   	Apache Tomcat Embebido (Spring Boot)
@@ -29,7 +29,7 @@ Hulk Store is a web app for maintaining a product's inventory. It was developed 
   </tr>
   <tr>
     <td>
-  	Ejecutable	
+  	Executable	
     </td>
     <td>
   	Jar
