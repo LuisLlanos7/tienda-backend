@@ -54,10 +54,18 @@ I provide the following resources:
 <table style="width:100%">
   <tr>
     <td>
-  	Database	
+  	Database SQL Backup	
     </td>
     <td>
-	asadasd
+	In the db folder
+    </td>
+  </tr>
+  <tr>
+    <td>
+  	Postman Collection	
+    </td>
+    <td>
+	In the postman folder
     </td>
   </tr>
 </table>
