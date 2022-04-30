@@ -48,6 +48,20 @@ A video exposing the functionality of the proyect in local environment on a Desk
 
 https://youtu.be/YXhbBld822g
 
+## Development Resources
+I provide the following resources:
+
+<table style="width:100%">
+  <tr>
+    <td>
+  	Database	
+    </td>
+    <td>
+	asadasd
+    </td>
+  </tr>
+</table>
+
 ## Pictures
 Some pictures of the project on a local environment respectively:
 
@@ -67,6 +81,9 @@ Some pictures of the project on a local environment respectively:
     <td>
   		<img width="450" alt="PostgreSQL" src="https://user-images.githubusercontent.com/56041525/166087969-de9325f0-1a54-481e-b8d7-eade2c231c33.PNG">
 	  </td>
+    <td>
+	<img width="450" alt="Eclipse" src="https://user-images.githubusercontent.com/56041525/166088468-1496317f-4c78-45be-83aa-11ae778715bd.png">
+    </td>
   </tr>
 </table>
 
