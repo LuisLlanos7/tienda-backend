@@ -1,8 +1,43 @@
 # Hulk Cardex System - Hulk-Store (Inventory)
 
-Hulk Store is a web app for maintaining a product's inventory. For the backend I used the following technologies and tools: Java 8, 
-Spring Boot 2, Junit 5, Mockito, Embebbed apache tomcat (Spring boot), Maven 3.5, PostMan and Sonar Qube. It was written using the best practices 
-for instance, a controller, service and repository layer approach, code reusing, unit tests, a good condition coverage, and more... 
+Hulk Store is a web app for maintaining a product's inventory. It was developed by Luis Espinosa Llanos and for the backend it was used the following technologies and tools: 
+
+<table style="width:100%">
+  <tr>
+    <td>
+  	Core	
+    </td>
+    <td>
+  	Java 1.8, Spring Boot 2 (Spring Framework), Data JPA, Hibernate, Loombok, Jackson Databinding
+    </td>
+  </tr>
+  <tr>
+    <td>
+  	Testing	
+    </td>
+    <td>
+  	Junit 5, Mockito, Sonar Lint, SonarQube
+    </td>
+  </tr>
+  <tr>
+    <td>
+  	Servidor	
+    </td>
+    <td>
+  	Apache Tomcat Embebido (Spring Boot)
+    </td>
+  </tr>
+  <tr>
+    <td>
+  	Ejecutable	
+    </td>
+    <td>
+  	Jar
+    </td>
+  </tr>
+</table>
+
+It was written using the best practices for instance, a controller, service and repository layer approach, code reusing, unit tests, a good condition coverage, and more... 
 
 ## Where is the FrontEnd?
 There is another repository available with the frontend code. You can find it here:
