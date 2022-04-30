@@ -37,7 +37,7 @@ Hulk Store is a web app for maintaining a product's inventory. It was developed 
   </tr>
 </table>
 
-It was written using the best practices for instance, a controller, service and repository layer approach, code reusing, unit tests, a good condition coverage, and more... 
+It was written using the best practices for instance, a controller, service and repository layer approach, code reusing, unit tests, a good condition coverage, dependecy injection, design patterns and more... 
 
 ## Where is the FrontEnd?
 There is another repository available with the frontend code. You can find it here:
