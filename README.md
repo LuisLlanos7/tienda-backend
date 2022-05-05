@@ -13,6 +13,14 @@ Hulk Store is a web app for maintaining a product's inventory. It was developed 
   </tr>
   <tr>
     <td>
+  	Database	
+    </td>
+    <td>
+  	PostgreSQL
+    </td>
+  </tr>
+  <tr>
+    <td>
   	Testing	
     </td>
     <td>
